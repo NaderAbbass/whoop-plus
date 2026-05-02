@@ -1,35 +1,47 @@
 {
   "expo": {
-    "name": "whoop-clone",
-    "slug": "whoop-clone",
+    "name": "WHOOP+",
+    "slug": "whoop-plus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.naderabbas.whoopplus",
+      "deploymentTarget": "15.0",
+      "backgroundColor": "#000000",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "WHOOP+ needs Bluetooth to connect to your WHOOP band and collect heart rate data continuously.",
+        "NSBluetoothPeripheralUsageDescription": "WHOOP+ needs Bluetooth to connect to your WHOOP band.",
+        "UIBackgroundModes": [
+          "bluetooth-central",
+          "processing",
+          "fetch"
+        ]
+      }
     },
     "plugins": [
-      "react-native-ble-plx",
-      "expo-build-properties",
-      "expo-secure-store"
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": true,
+          "modes": ["central"],
+          "bluetoothAlwaysPermission": "WHOOP+ needs Bluetooth to connect to your WHOOP band and collect heart rate data continuously."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.0"
+          }
+        }
+      ]
     ]
   }
 }
